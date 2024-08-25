@@ -28,18 +28,19 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+        const playerId = params.get('pid');
+        const gameId = params.get('gid');
 
-        fetch('data.json')
+        fetch(gameId + '.json')
             .then(response => response.json())
             .then(data => {
                 if (data[id]) {
-                    document.getElementById('profession_value').innerText = data[id].profession;
-                    document.getElementById('bio_value').innerText = data[id].bio;
-                    document.getElementById('phobia_value').innerText = data[id].phobia;
-                    document.getElementById('illness_value').innerText = data[id].illness;
-                    document.getElementById('baggage_value').innerText = data[id].baggage;
-                    document.getElementById('additional_info_value').innerText = data[id].additionalInfo;
+                    document.getElementById('profession_value').innerText = data[playerId].profession;
+                    document.getElementById('bio_value').innerText = data[playerId].bio;
+                    document.getElementById('phobia_value').innerText = data[playerId].phobia;
+                    document.getElementById('illness_value').innerText = data[playerId].illness;
+                    document.getElementById('baggage_value').innerText = data[playerId].baggage;
+                    document.getElementById('additional_info_value').innerText = data[playerId].additionalInfo;
                 }
             })
             .catch(error => {
