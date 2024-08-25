@@ -34,13 +34,15 @@
         fetch(gameId + '.json')
             .then(response => response.json())
             .then(data => {
-                if (data[id]) {
+                if (data[playerId]) {
                     document.getElementById('profession_value').innerText = data[playerId].profession;
                     document.getElementById('bio_value').innerText = data[playerId].bio;
                     document.getElementById('phobia_value').innerText = data[playerId].phobia;
                     document.getElementById('illness_value').innerText = data[playerId].illness;
                     document.getElementById('baggage_value').innerText = data[playerId].baggage;
                     document.getElementById('additional_info_value').innerText = data[playerId].additionalInfo;
+                } else {
+                    console.error('Player data not found');
                 }
             })
             .catch(error => {
